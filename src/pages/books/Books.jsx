@@ -1,9 +1,15 @@
-import React from "react";
+import { useContext } from "react";
+import { BookContext } from "../../context/BookProvider";
 
 const Books = () => {
+  const { storedBooks, wishList } = useContext(BookContext);
+  console.log("storedBooks", storedBooks);
+  console.log("wishList", wishList);
+
   return (
-    <div>
-      <h3>Books page</h3>
+    <div className="container mx-auto">
+      <h3>Wish list: {wishList.length}</h3>
+      <h3>book list: {storedBooks.length}</h3>
     </div>
   );
 };
