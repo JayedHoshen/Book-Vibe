@@ -6,7 +6,6 @@ import { useState } from "react";
 
 const Books = () => {
   const [sortingType, setSortingType] = useState("");
-  console.log(sortingType, "sorting type");
   return (
     <div className="container mx-auto mb-16 p-4">
       <h2 className="p-6 bg-gray-100 rounded-xl text-2xl font-bold my-8 text-center">
@@ -15,7 +14,7 @@ const Books = () => {
       <div className="flex justify-center mb-8">
         <div className="dropdown dropdown-bottom">
           <div tabIndex={0} role="button" className="btn m-1">
-            Sort by ⬇️
+            Sort by: {sortingType} ⬇️
           </div>
           <ul
             tabIndex="-1"
@@ -27,6 +26,9 @@ const Books = () => {
             <li onClick={() => setSortingType("rating")}>
               <a>Rating</a>
             </li>
+            <li onClick={() => setSortingType("publishingYear")}>
+              <a>Publishing Year</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -37,10 +39,10 @@ const Books = () => {
         </TabList>
 
         <TabPanel>
-          <ListedReadBooks></ListedReadBooks>
+          <ListedReadBooks sortingType={sortingType}></ListedReadBooks>
         </TabPanel>
         <TabPanel>
-          <ListedWishlistBooks></ListedWishlistBooks>
+          <ListedWishlistBooks sortingType={sortingType}></ListedWishlistBooks>
         </TabPanel>
       </Tabs>
     </div>
